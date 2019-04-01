@@ -1,8 +1,4 @@
 
-
-
-
-
 var Colmuns = [
 
 	new Ext.app.common.ColmunField({

@@ -773,7 +773,7 @@
 													});
 										}
 									}
-								}));
+							}));
 				toolbar.addSeparator();
 			}*/
 

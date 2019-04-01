@@ -326,6 +326,7 @@
 									failure: function(response,options) {
 									}
 								});
+
 								var Conditions = cacheCondition();
 								var beginTime = "";
 								var endTime = "";
@@ -345,7 +346,9 @@
 								}
 								if(!beginTime || !endTime || !dnis){
 									alert("开始时间、结束时间以及被叫号码都为必填项，请重新输入查询条件");
+
 								}else if(beginTime && endTime && dnis){
+
 									obj.targetTab.add({
 										title: '查询结果',
 										iconCls: 'gridbtn',
@@ -355,6 +358,7 @@
 										closable:true,
 										html:'<iframe src="result_for_record.jsp" border=0 width="100%" height="100%" frameborder="no" scrolling="auto"></iframe>'
 									}).show();
+
 								}
 							}/* ,
 							'render':function(obj,e){
