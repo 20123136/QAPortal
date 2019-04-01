@@ -1,0 +1,4 @@
+{"success":true,"code":"OK","message":"","data":[
+{"Time":"2013-11-01 10:08:53","Server":"AVP-Server1","Type":"TTS异常","Port":"2401","Content":"TTS语音合成失败"},
+{"Time":"2013-11-02 18:25:12","Server":"AVP-Server2","Type":"交易异常","Port":"2405","Content":"交易失败，访问交易网关超时"},
+],"total":2}

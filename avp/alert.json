@@ -1,0 +1,4 @@
+{"success":true,"code":"OK","message":"","data":[
+{"Time":"2013-11-02 03:34:45","Alert":"交易异常（连续3次交易超时）","Type":"1","Level":"Normal","Content":"连续发生三次交易超时"},
+{"Time":"2013-11-02 13:52:09","Alert":"数据库连接中断","Type":"1","Level":"HIGH","Content":"无法连接数据库"},
+],"total":2}

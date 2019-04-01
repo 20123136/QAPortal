@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+html, body {
+	font:normal 9px;
+	margin:0;
+	padding:0;
+	border:0 none;
+	overflow:hidden;
+	height:100%;
+}
+.title{
+	font:16pt 仿宋;
+	color:#ffffff;
+}
+td {
+	font-size:9pt;
+}
+
+a.nav-link  { 
+	font:normal 9pt ; 
+	color:#000000; 
+	text-decoration:none; 
+}
+
+a.nav-link:hover  { 
+	color:#000000;text-decoration: underline; 
+}
+
+.x-selectable, .x-selectable * {       
+	-moz-user-select: text! important ;       
+	-khtml-user-select: text! important ;       
+}       

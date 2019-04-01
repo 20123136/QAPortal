@@ -1,0 +1,18 @@
+[{
+    text:'帐号',
+    expanded: true,
+    children:[
+    {
+        text:'参数设置',
+        id:'web_param',
+        leaf:true
+    }
+   ]
+},{
+    text:'其他',
+    children:[{
+        text:'个性化菜单',
+		id: 'web_menu',
+        leaf:true
+	}]
+}]

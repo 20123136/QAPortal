@@ -1,0 +1,96 @@
+[{
+    text:'通用',
+    expanded: true,
+    children:[
+    {
+        text:'数据源',
+        id:'datasource-list',
+        leaf:true
+    }
+   ]
+},{
+    text:'录音查询',
+    children:[{
+        text:'设置',
+		id: 'record-query',
+        leaf:true
+	},{
+        text:'格式转换',
+		id: 'record-format',
+        leaf:true
+	},{
+        text:'ASR',
+		id: 'record-asr',
+        leaf:true
+    }]
+},{
+    text:'录音备份',
+    children:[{
+        text:'邮件报告',
+		id: 'backup-mail',
+        leaf:true
+    },{
+        text:'微信报告',
+		id: 'backup-wechat',
+        leaf:true
+    }]
+},{
+    text:'数据字典',
+    children:[{
+        text:'呼叫类型',
+		id: 'dict-calltype',
+        leaf:true
+    },
+	{
+        text:'用户类型',
+		id: 'dict-usertype',
+        leaf:true
+    },
+	{
+        text:'权限类型',
+		id: 'dict-privilegetype',
+        leaf:true
+    },
+	{
+        text:'质检记录状态',
+		id: 'dict-qa-status',
+        leaf:true
+    },
+	{
+        text:'质检案例属性',
+		id: 'dict-qa-case-attribute',
+        leaf:true
+    },
+	{
+        text:'相对时间类型',
+		id: 'dict-relativetimetype',
+        leaf:true
+    }]
+},{
+    text:'质检',
+    children:[
+	{
+        text:'质检项设置',
+        id:'qa-item',
+        leaf:true
+	},{
+        text:'质检案例设置',
+        id:'qa-case',
+        leaf:true
+	},{
+        text:'质检抽样设置',
+        id:'qa-sample-normal',
+        leaf:true
+    }]
+},{
+    text:'系统',
+    children:[{
+        text:'配置',
+        id:'sys-normal',
+        leaf:true
+    }/*,{
+        text:'IP对应关系',
+        id:'aspect-ip-list',
+        leaf:true
+    }*/]
+}]

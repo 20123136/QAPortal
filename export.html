@@ -1,0 +1,209 @@
+
+<html>
+<head>
+
+<title>导出数据</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/ext-all-notheme.css" />
+<link rel="stylesheet" type="text/css" href="css/xtheme-gray.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/icon.css" />
+
+<script type="text/javascript" src="js/ext-base.js"></script>
+<script type="text/javascript" src="js/ext-all.js"></script>
+<script type="text/javascript" src="js/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ux/Clone.js"></script>
+<script type="text/javascript" src="js/func.js"></script>
+
+<script type="text/javascript">
+	function doExport(type) {//调用
+		var tmpStore = parent.grid.getStore();
+		var tmpExportContent = '';
+		var tmpParam = Ext.ux.clone(tmpStore.baseParams); //此处克隆了原网格数据源的参数信息 
+
+		var loadMask = new Ext.LoadMask(Ext.getBody(), {
+			msg : "导出中请等待..."
+		});
+
+		loadMask.show();
+
+		if (tmpParam) {
+			delete tmpParam.start; //删除分页参数  
+			delete tmpParam.limit;
+		}
+    	//tmpStore.proxy.method = 'post';
+    	
+ 		console.log(tmpParam);
+		console.log(tmpStore);
+	//	console.log(parent.grid.getColumnModel());  
+		var tmpAllStore = new Ext.data.GroupingStore({//重新定义一个数据源   GroupingStore
+			proxy : tmpStore.proxy,//是这里
+			/* proxy: new Ext.data.HttpProxy({
+				url: tmpStore.proxy.url,
+				method :'POST',
+				timeout: 30000,
+			}), */
+				reader : tmpStore.reader
+		});
+		if (type == 'xls') {
+			var config = {
+				title : '导出结果'
+			};
+			tmpAllStore   
+					.on(
+							'load',
+							function(store) { 
+							//	if(!parent.grid.getSelectionModel().getSelected()){
+									config.store = store.data.items;
+							//	}else{
+							//	    var datas=parent.grid.getSelectionModel().getSelections();
+					    	// 	    config.store = datas;
+							//	}
+							
+								console.log(config);
+								tmpExportContent = parent.grid.getExcelXml(
+										false, config); //此方法用到了一中的扩展
+								
+								Ext.Ajax
+										.request({
+											url : '/QAPortal/Report/Export',
+											success : function(response,
+													options) {
+												var respText = Ext.util.JSON
+														.decode(response.responseText);
+												if (respText.code == 'OK') {
+													window.location.href = "/QAPortal/Report/Export/GetFile/"
+															+ respText.data
+												} else {
+													Ext.Msg.alert('导出失败',
+															respText.message);
+												}
+												loadMask.hide();
+											},
+											failure : function(response,
+													options) {
+												Ext.Msg.alert('导出失败', '连接异常！');
+												loadMask.hide();
+											},
+											method : 'POST',
+											timeout : 300000,
+											params : {
+												content : tmpExportContent
+											}
+										});
+							});
+			tmpAllStore.baseParams = tmpParam;
+			tmpParam.limit =5000;
+			tmpAllStore.load(tmpParam); 
+			
+		} else if (type == 'csv') {
+			tmpAllStore
+					.on(
+							'load',
+							function(store) {
+								var column =  parent.grid.getColumnModel().config;
+								var headerArr = [];
+									for(var j = 0, len=column.length; j<len; j++){
+										headerArr.push(column[j].header);
+									}
+								var count = store.getCount();
+								var arrs = [];
+								arrs.push(headerArr.join()+'//');
+								for (var i = 0; i < count; i++) {
+									var record = store.getAt(i);
+									var arr = [];
+									var recordData = record.data;
+									for(var j = 0, len=column.length; j<len; j++){
+										arr.push(recordData[column[j].dataIndex]);
+									}
+
+									arrs.push(arr.join()+'//');
+								}
+								tmpExportContent = arrs.join(' \n');
+								console.log(tmpExportContent);
+								
+								
+ 								Ext.Ajax
+										.request({
+ 											url : '/QAPortal/Report/CSVExport',
+ 											success : function(response,
+ 													options) {
+ 												var respText = Ext.util.JSON
+ 														.decode(response.responseText);
+												if (respText.code == 'OK') {
+ 													window.location.href = "/QAPortal/Report/CSVExport/GetFile/"+ respText.data
+ 												} else {
+ 													Ext.Msg.alert('导出失败',
+															respText.message);
+ 												}
+ 												loadMask.hide();
+											},
+ 											failure : function(response,
+ 													options) {
+ 												Ext.Msg.alert('导出失败', '连接异常！');
+ 												loadMask.hide();
+ 											},
+ 											method : 'POST',
+ 											timeout : 300000,
+ 											params : {
+ 												content : tmpExportContent
+ 											}
+										//
+ 										});
+							});
+			tmpAllStore.baseParams = tmpParam;
+			tmpAllStore.load(tmpParam); //获取所有数据
+		}
+	}
+
+	Ext.onReady(function() {
+		Ext.QuickTips.init();
+
+		var viewport = new Ext.Viewport({
+			layout : 'absolute',
+			border : false,
+			items : [ {
+				region : 'center',
+				x : 150,
+				y : 20,
+				layout : 'table',
+				layoutConfig : {
+					columns : 3
+				},
+				border : false,
+				width : '50%',
+				margins : '0 0 0 0',
+				iconCls : 'searchbtn',
+				items : [ new Ext.Button({
+					iconCls : 'xlsbigbtn',
+					scale : 'large',
+					text : 'Excel格式',
+					listeners : {
+						'click' : function() {
+							doExport('xls');
+						}
+					}
+				}), {
+					width : 50,
+					border : false,
+					html : '&nbsp;'
+				} /* , new Ext.Button({
+
+					iconCls : 'xlsbigbtn',
+					scale : 'large',
+					text : 'CSV格式',
+					listeners : {
+						'click' : function() {
+							doExport('csv');
+						}
+					}
+				}) */  ]
+			} ]
+		});
+	});
+</script>
+
+</head>
+<body>
+</body>
+</html>

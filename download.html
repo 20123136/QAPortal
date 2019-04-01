@@ -1,0 +1,208 @@
+
+<html>
+<head>
+<title>下载录音</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/ext-all-notheme.css" />
+	<link rel="stylesheet" type="text/css" href="css/xtheme-gray.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/icon.css" />
+
+    <script type="text/javascript" src="js/ext-base.js"></script>
+    <script type="text/javascript" src="js/ext-all.js"></script>
+    <script type="text/javascript" src="js/ext-lang-zh_CN.js"></script>
+
+	<script type="text/javascript">
+	Date.prototype.format =function(format)
+	{
+		var o = {
+		"M+" : this.getMonth()+1, //month
+		"d+" : this.getDate(),    //day
+		"h+" : this.getHours(),   //hour
+		"m+" : this.getMinutes(), //minute
+		"s+" : this.getSeconds(), //second
+		"q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+		"S" : this.getMilliseconds() //millisecond
+		}
+		if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+		(this.getFullYear()+"").substr(4- RegExp.$1.length));
+		for(var k in o)if(new RegExp("("+ k +")").test(format))
+		format = format.replace(RegExp.$1,
+		RegExp.$1.length==1? o[k] :
+		("00"+ o[k]).substr((""+ o[k]).length));
+		return format;
+    }
+	
+	var downid;
+
+	function doDownload(type) {
+		var sm = parent.grid.getSelectionModel();
+		if(sm.getCount() == 1) {
+			var rec = parent.grid.getSelectionModel().getSelected();
+			var fileName = rec.get('fileName');
+			if(type == 'mp3') {
+				fileName = rec.get('fileName').replace('.wav', '.mp3');
+			}
+			console.log(fileName);
+			window.location.href = "/QAVoice/" + fileName;
+		}
+
+		if(sm.getCount() > 1) {
+			var filenames = new Array();
+			Ext.each(parent.grid.getSelectionModel().getSelections(), function(rec) {
+				filenames.push(rec.get('fileName'));
+			});
+
+			downid = 'Voice' + new Date().format('yyyyMMddhhmmss');
+			
+			Ext.getCmp('btnMp3').disable();
+			Ext.getCmp('btnWav').disable();
+
+			Ext.Ajax.request({
+				url: 'Voice/MutiDownload/' + downid,
+				method: 'POST',
+				params: {
+					fileName: filenames
+				},
+				success: function(response,options) {
+					var respText = Ext.util.JSON.decode(response.responseText);
+					if(respText.code != 'OK') {
+						Ext.getCmp('btnMp3').enable();
+						Ext.getCmp('btnWav').enable();
+						Ext.Msg.alert('下载失败', respText.message + "（" + respText.code + "）");
+					} else {
+						showDownloadStatus();
+					}
+				},
+				failure: function(response,options) {
+					Ext.getCmp('btnMp3').enable();
+					Ext.getCmp('btnWav').enable();
+					Ext.Msg.alert('下载失败', '下载失败失败！');
+				}
+			});
+			
+			var statusBtn = parent.Ext.getCmp('btnDownloadStatus');
+			statusBtn.show();
+			statusBtn.setText('开始下载...');
+		}
+
+	}
+
+	function showDownloadStatus() {
+		timerId = window.setInterval(function() {
+			Ext.Ajax.request({
+				url: 'Voice/MutiDownload/' + downid + '/Status',
+				success: function(response,options) {
+					var respText = Ext.util.JSON.decode(response.responseText);
+					if(respText.code != 'OK') {
+						Ext.Msg.alert('下载失败', respText.message + "（" + respText.code + "）");
+						clearInterval(timerId);
+					} else {
+						var status = respText.data.Status;
+						var statusBtn = parent.Ext.getCmp('btnDownloadStatus');
+						statusBtn.show();
+						if(status == 'Success') {
+							statusBtn.setText('下载完成！（' + (respText.data.Completed + respText.data.Failed) + '/' + respText.data.Total + '）');
+							statusBtn.setIconClass('completebtn');
+							clearInterval(timerId);
+							Ext.getCmp('btnMp3').enable();
+							Ext.getCmp('btnWav').enable();
+							window.location.href = '/QAVoice/' + downid + '.zip';
+						}
+						if(status == 'Running') {
+							statusBtn.setText('下载中（' + (respText.data.Completed + respText.data.Failed) + '/' + respText.data.Total + '）');
+							statusBtn.setIconClass('loadingbtn');
+						}
+						if(status == 'Error') {
+							statusBtn.setText('下载失败（' + respText.data.Message + '）');
+							clearInterval(timerId);
+							Ext.getCmp('btnMp3').enable();
+							Ext.getCmp('btnWav').enable();
+						}
+					}
+				},
+				failure: function(response,options) {
+					Ext.Msg.alert('下载失败', '下载失败！');
+					clearInterval(timerId);
+					Ext.getCmp('btnMp3').enable();
+					Ext.getCmp('btnWav').enable();
+				}
+			})
+		}
+		, 3000);
+	}
+
+	Ext.onReady(function(){
+		Ext.QuickTips.init();
+
+		var viewport = new Ext.Viewport({
+            layout: 'absolute',
+			border: false,
+            items: [
+			{
+                region: 'center',
+				x: 150,
+				y: 20,
+				layout:'table',
+				layoutConfig: {
+					columns: 3
+				},				
+				border: false,
+				width: '50%',
+                margins: '0 0 0 0',
+                iconCls: 'searchbtn',
+                items: [
+					new Ext.Button({
+						id: 'btnMp3',
+						iconCls: 'mp3bigbtn',
+						scale: 'large',
+						text: 'Mp3格式',
+						listeners: {
+							'click' : function() {
+								doDownload('mp3');
+							}
+						}
+					}),
+					{
+						width: 30,
+						border: false,
+						html: '&nbsp;'
+					},
+					new Ext.Button({
+						id: 'btnWav',
+						iconCls: 'wavbigbtn',
+						scale: 'large',
+						text: 'Wav格式',
+						listeners: {
+							'click' : function() {
+								doDownload('wav');
+							}
+						}
+					})/* ,
+					{
+						width: 10,
+						border: false,
+						html: '&nbsp;'
+					},
+					new Ext.Button({
+						id: 'btnOther ',
+						iconCls: ' ',
+						scale: 'large',
+						text: '其他格式',
+						listeners: {
+							'click' : function() {
+								doDownload('other');
+							}
+						}
+					}) */
+				]
+			}
+			]
+		});	
+	});
+	</script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,34 @@
+[{
+    text:'CTI',
+    expanded: true,
+    children:[
+    {
+        text:'AES disconnect',
+        id:'web_param',
+        leaf:true
+    },{
+        text:'out of disk space',
+        id:'web_param',
+        leaf:true
+    },{
+        text:'out of disk space',
+        id:'web_param',
+        leaf:true
+    },{
+        text:'out of disk space',
+        id:'web_param',
+        leaf:true
+    }]
+},{
+    text:'录音',
+    children:[
+    {
+        text:'AES disconnect',
+        id:'web_param',
+        leaf:true
+    },{
+        text:'out of disk space',
+        id:'web_param',
+        leaf:true
+    }]
+}]

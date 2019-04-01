@@ -1,0 +1,366 @@
+@CHARSET "UTF-8";
+.quit {
+	background-image:url("../images/icons/fam/delete.png");
+}
+.menutree {
+	background-image:url("../images/icons/fam/application_view_icons.png");
+}
+.userinfo {
+	background-image:url("../images/icons/fam/information.png");
+}
+.house {
+	background-image:url("../images/icons/fam/house.png");
+}
+.monitor {
+	background-image:url("../images/icons/fam/monitor.png");
+}
+.services {
+	background-image:url("../images/icons/fam/plugin.png");
+}
+.clear_state {
+    background-image:url('../images/icons/fam/exclamation.png') !important;
+ }
+.login {
+    background-image:url('../images/icons/fam/accept.png') !important;
+ }
+
+.setting {
+    background-image:url('../images/icons/fam/cog_edit.png') !important;
+ }
+
+.settingbtn {
+	background-image:url("../images/icons/fam/cog_edit.png") !important;
+}
+
+.searchbtn {
+	background-image:url("../images/default/dd/qry.gif") !important;
+}
+
+.gridbtn {
+	background-image:url("../images/icons/fam/grid.png") !important;
+}
+
+.rptbtn {
+	background-image:url("../images/icons/fam/report.png") !important;
+}
+
+.printbtn {
+	background-image:url("../images/icons/fam/printer.png") !important;
+}
+
+.excelbtn {
+	background-image:url("../images/icons/fam/page_excel.png") !important;
+}
+
+.csvbtn {
+	background-image:url("../images/icons/fam/page_attach.png") !important;
+}
+
+.refreshbtn {
+	background-image:url("../images/icons/fam/arrow_refresh.png") !important;
+}
+
+.playbtn {
+	background-image:url("../images/icons/fam/cd_go.png") !important;
+}
+
+.downloadbtn {
+	background-image:url("../images/icons/fam/drive_disk.png") !important;
+}
+
+.favoritebtn {
+	background-image:url("../images/icons/fam/basket_put.png") !important;
+}
+
+.exportbtn {
+	background-image:url("../images/icons/fam/database_go.png") !important;
+}
+
+.qualitybtn {
+	background-image:url("../images/icons/fam/award_star_silver_1.png") !important;
+}
+
+.gradebtn {
+	background-image:url("../images/icons/fam/award_star_silver_2.png") !important;
+}
+
+.stopbtn {
+	background-image:url("../images/icons/fam/delete.png") !important;
+}
+
+.tabdelete {
+	background-image:url("../images/icons/fam/tab_delete.png") !important;
+}
+
+.savebtn {
+	background-image:url("../images/icons/save.gif") !important;
+}
+
+.agentbtn {
+	background-image:url("../images/icons/fam/user.png") !important;
+}
+
+.skillbtn {
+	background-image:url("../images/icons/fam/group.png") !important;
+}
+
+.deptbtn {
+	background-image:url("../images/icons/fam/group.png") !important;
+}
+
+.logbtn {
+	background-image:url("../images/icons/fam/page.png") !important;
+}
+
+.txtbtn {
+	background-image:url("../images/icons/fam/page_white_text.png") !important;
+}
+
+.xmlbtn {
+	background-image:url("../images/icons/fam/page_white_code.png") !important;
+}
+
+.filebtn {
+	background-image:url("../images/icons/fam/page.png") !important;
+}
+
+.folderbtn {
+	background-image:url("../images/icons/fam/folder.png") !important;
+}
+
+.voicebtn {
+	background-image:url("../images/icons/fam/page_white_cd.png") !important;
+}
+
+.voicemgrbtn {
+	background-image:url("../images/icons/fam/feed.png") !important;
+}
+
+.confbtn {
+    background-image:url('../images/icons/fam/cog.png') !important;
+ }
+
+.confaddbtn {
+    background-image:url('../images/icons/fam/cog_add.png') !important;
+ }
+
+.confdelbtn {
+    background-image:url('../images/icons/fam/cog_delete.png') !important;
+ }
+
+.confeditbtn {
+    background-image:url('../images/icons/fam/cog_edit.png') !important;
+ }
+.upbtn {
+	background-image:url("../images/icons/arrow-up.gif") !important;
+}
+.downbtn {
+	background-image:url("../images/icons/arrow-down.gif") !important;
+}
+.bellbtn {
+    background-image:url('../images/icons/fam/bell.png') !important;
+}
+.chartlinebtn {
+    background-image:url('../images/icons/fam/chart_curve.png') !important;
+}
+.telephonebtn {
+    background-image:url('../images/icons/fam/telephone.png') !important;
+}
+.qualitybtn {
+	background-image:url("../images/icons/fam/award_star_silver_1.png") !important;
+}
+.gradebtn {
+	background-image:url("../images/icons/fam/award_star_silver_2.png") !important;
+}
+.tablebtn {
+	background-image:url("../images/icons/fam/table.png") !important;
+}
+.dictbtn {
+	background-image:url("../images/icons/fam/book.png") !important;
+}
+.dictaddbtn {
+	background-image:url("../images/icons/fam/book_add.png") !important;
+}
+.dicteditbtn {
+	background-image:url("../images/icons/fam/book_edit.png") !important;
+}
+.dictdelbtn {
+	background-image:url("../images/icons/fam/book_delete.png") !important;
+}
+.enablebtn {
+	background-image:url("../images/icons/fam/accept.png");
+}
+.disablebtn {
+	background-image:url("../images/icons/fam/delete.png");
+}
+.useraddbtn {
+	background-image:url("../images/icons/fam/user_add.png");
+}
+.usereditbtn {
+	background-image:url("../images/icons/fam/user_edit.png");
+}
+.userdelbtn {
+	background-image:url("../images/icons/fam/user_delete.png");
+}
+.pwdbtn {
+	background-image:url("../images/default/dd/changePwd.gif");
+}
+.exportbtn {
+	background-image:url("../images/icons/fam/database_go.png");
+}
+.uploadbtn {
+	background-image:url("../images/icons/fam/zoom.png");
+}
+.groupbtn {
+	background-image:url("../images/icons/fam/group.png");
+}
+.roleaddbtn {
+	background-image:url("../images/icons/fam/user_add.png");
+}
+.roleeditbtn {
+	background-image:url("../images/icons/fam/user_edit.png");
+}
+.roledelbtn {
+	background-image:url("../images/icons/fam/user_delete.png");
+}
+.keybtn {
+	background-image:url("../images/icons/fam/key.png");
+}
+.priaddbtn {
+	background-image:url("../images/icons/fam/key_add.png");
+}
+.prieditbtn {
+	background-image:url("../images/icons/fam/key_go.png");
+}
+.pridelbtn {
+	background-image:url("../images/icons/fam/key_delete.png");
+}
+.pribtn {
+	background-image:url("../images/icons/fam/key.png");
+}
+.dbaddbtn {
+	background-image: url("../images/icons/fam/database_add.png");
+}
+.dbeditbtn {
+	background-image: url("../images/icons/fam/database_edit.png");
+}
+.dbdelbtn {
+	background-image: url("../images/icons/fam/database_delete.png");
+}
+.dbtestbtn {
+	background-image: url("../images/icons/fam/database_go.png");
+}
+.rec_query {
+	background-image: url("../images/icons/fam/zoom.png");
+}
+.qa {
+	background-image: url("../images/icons/fam/award_star_silver_3.png");
+}
+.sys {
+	background-image: url("../images/icons/fam/computer.png");
+}
+.business_mgr {
+	background-image: url("../images/icons/fam/group.png");
+}
+.user {
+	background-image:url("../images/icons/fam/user.png") !important;
+}
+.role {
+	background-image:url("../images/icons/fam/user.png") !important;
+}
+.department {
+	background-image: url("../images/icons/fam/group.png");
+}
+.qaitemaddbtn {
+	background-image:url("../images/icons/fam/award_star_add.png");
+}
+.qaitemeditbtn {
+	background-image:url("../images/icons/fam/award_star_bronze_3.png");
+}
+.qaitemdelbtn {
+	background-image:url("../images/icons/fam/award_star_delete.png");
+}
+.qaitembtn {
+	background-image:url("../images/icons/fam/award_star_gold_3.png");
+}
+.helpbtn {
+	background-image:url("../images/icons/fam/help.png");
+}
+.package {
+	background-image:url("../images/icons/fam/package.png");
+}
+.casequery {
+	background-image:url("../images/icons/fam/page_find.png");
+}
+.casecheck {
+	background-image:url("../images/icons/fam/page_key.png");
+}
+.caseconf {
+	background-image:url("../images/icons/fam/page_gear.png");
+}
+.qaassign {
+	background-image:url("../images/icons/fam/brick.png");
+}
+.qaassignmgr {
+	background-image:url("../images/icons/fam/bricks.png");
+}
+.leftbtn {
+	background-image:url("../images/icons/fam/arrow_left.png");
+}
+.rightbtn {
+	background-image:url("../images/icons/fam/arrow_right.png");
+}
+.finishbtn {
+	background-image:url("../images/icons/fam/arrow_rotate_clockwise.png");
+}
+.runbtn {
+	background-image:url("../images/icons/fam/hourglass.png");
+}
+.completebtn {
+	background-image:url("../images/icons/fam/tick.png");
+}
+.commentbtn {
+	background-image:url("../images/icons/fam/comment.png");
+}
+.commentsbtn {
+	background-image:url("../images/icons/fam/comments.png");
+}
+.clockbtn {
+	background-image:url("../images/icons/fam/clock.png");
+}
+.whitebtn {
+	background-image:url("../images/icons/fam/bullet_white.png");
+}
+.greenbtn {
+	background-image:url("../images/icons/fam/bullet_green.png");
+}
+.blackbtn {
+	background-image:url("../images/icons/fam/bullet_black.png");
+}
+.bluebtn {
+	background-image:url("../images/icons/fam/bullet_blue.png");
+}
+.timebtn {
+	background-image:url("../images/icons/fam/time.png");
+}
+.weChat {
+	background-image:url("../images/icons/fam/weChat.png");
+}
+.mp3bigbtn {
+	background-image:url("../images/icons/mp3.png");
+}
+.wavbigbtn {
+	background-image:url("../images/icons/wav.png");
+}
+.xlsbigbtn {
+	background-image:url("../images/icons/xls.png");
+}
+.rollbackbtn {
+	background-image:url("../images/icons/fam/arrow_rotate_clockwise.png");
+}
+.closebtn {
+	background-image:url("../images/icons/fam/cross.png");
+}
+.loadingbtn {
+	background-image:url("../images/loading.gif");
+}

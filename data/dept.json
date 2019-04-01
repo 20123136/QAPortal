@@ -1,0 +1,8 @@
+{"success":true,"code":"OK","message":"","data":[
+{"id":"1","fatherId":"1","name":"总部","description":"总部","status":"AVAILABLE","lastUpdateTime":1303978674047},
+{"id":"1014","fatherId":"1","name":"客服","description":"客服","status":"DISABLED","lastUpdateTime":1355911980183},
+{"id":"1016","fatherId":"1014","name":"客服一组","description":客服一组,"status":"AVAILABLE","lastUpdateTime":1353303670017},
+{"id":"1017","fatherId":"1014","name":"客服二组","description":"客服二组","status":"AVAILABLE","lastUpdateTime":1353303843567},
+{"id":"1018","fatherId":"1","name":"质检","description":"质检","status":"AVAILABLE","lastUpdateTime":1353304963940},
+{"id":"1019","fatherId":"1018","name":"质检一组","description":"质检一组","status":"AVAILABLE","lastUpdateTime":1361264250600}
+],"total":6}
